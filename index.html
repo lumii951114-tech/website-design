@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffaf3">
+  <meta name="description" content="呂明穎的個人自我介紹：保持好奇、勇敢向前，以行動與關懷迎接每個挑戰。">
+  <title>呂明穎 — 保持好奇，勇敢向前</title>
+
+  <!-- 提早辨識減少動態偏好，避免訪客在不需要動畫時看到淡入效果。 -->
+  <script>
+    if (
+      "IntersectionObserver" in window &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      document.documentElement.classList.add("motion-ready");
+    }
+  </script>
+
+  <style>
+    /* 共用設定：以明亮暖白、森林綠和珊瑚紅營造清新有朝氣的氛圍。 */
+    :root {
+      color-scheme: light;
+      --ink: #263a31;
+      --ink-soft: #fffaf3;
+      --paper: #ffffff;
+      --muted: #68776d;
+      --line: rgba(38, 58, 49, 0.16);
+      --accent: #df7357;
+      --page-gutter: clamp(24px, 8vw, 128px);
+      --header-height: 76px;
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    /* 基礎排版：限制頁面寬度，並讓每個段落至少佔滿一個視窗。 */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    body,
+    button,
+    a {
+      font-family: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: white;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    /* 無障礙捷徑：鍵盤使用者可略過導覽，直接閱讀主內容。 */
+    .skip-link {
+      position: fixed;
+      z-index: 20;
+      top: 12px;
+      left: 12px;
+      padding: 10px 16px;
+      transform: translateY(-160%);
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    /* 透明導覽列在捲動後轉為毛玻璃，讓閱讀位置始終清楚。 */
+    .site-header {
+      position: fixed;
+      z-index: 10;
+      inset: 0 0 auto;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-inline: var(--page-gutter);
+      transition: background-color 240ms ease, border-color 240ms ease;
+      border-bottom: 1px solid transparent;
+      color: var(--ink);
+    }
+
+    .scroll-progress {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .scroll-progress span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      transform: scaleX(0);
+      transform-origin: left center;
+      background: var(--accent);
+    }
+
+    .site-header.is-scrolled {
+      border-bottom-color: var(--line);
+      background: rgba(255, 250, 243, 0.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
+    .wordmark-mark {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(223, 115, 87, 0.35);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 2.2vw, 32px);
+      color: rgba(38, 58, 49, 0.82);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+
+    .main-nav a {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .main-nav a:hover {
+      color: var(--accent);
+    }
+
+    .main-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: 1px;
+      left: 0;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: var(--accent);
+      content: "";
+    }
+
+    .main-nav a[aria-current="location"] {
+      color: var(--accent);
+    }
+
+    .main-nav a[aria-current="location"]::after {
+      transform: scaleX(1);
+    }
+
+    .menu-toggle {
+      display: none;
+      min-width: 44px;
+      min-height: 44px;
+      place-items: center;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.78);
+      cursor: pointer;
+    }
+
+    .menu-icon,
+    .menu-icon::before,
+    .menu-icon::after {
+      width: 16px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    .menu-icon {
+      position: relative;
+    }
+
+    .menu-icon::before,
+    .menu-icon::after {
+      position: absolute;
+      left: 0;
+      content: "";
+    }
+
+    .menu-icon::before {
+      top: -5px;
+    }
+
+    .menu-icon::after {
+      top: 5px;
+    }
+
+    /* 每個全螢幕區塊只呈現一個主題，保留穩定的沉浸式捲動節奏。 */
+    .panel {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: calc(var(--header-height) + 32px) var(--page-gutter) 88px;
+      scroll-snap-align: start;
+      isolation: isolate;
+    }
+
+    .panel-inner {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 1280px);
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 22px;
+      color: #ae4c35;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    .display {
+      margin: 0;
+      font-size: clamp(46px, 8vw, 112px);
+      font-weight: 500;
+      letter-spacing: -0.07em;
+      line-height: 1.14;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(36px, 5.4vw, 72px);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 1.28;
+    }
+
+    .body-copy {
+      max-width: 540px;
+      margin: 24px 0 0;
+      color: rgba(38, 58, 49, 0.76);
+      font-size: clamp(14px, 1.35vw, 17px);
+      line-height: 2;
+    }
+
+    /* 首屏：完整顯示個人照片，以明亮底色和柔和漸層確保文字易讀。 */
+    .hero {
+      min-height: max(720px, 100vh);
+      min-height: max(720px, 100svh);
+      align-items: end;
+      background: #e7efe8;
+    }
+
+    .hero-portrait {
+      position: absolute;
+      z-index: 0;
+      right: clamp(24px, 12vw, 180px);
+      bottom: 0;
+      width: auto;
+      max-width: 58%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background:
+        linear-gradient(90deg, #fffaf3 5%, rgba(255, 250, 243, 0.96) 27%, rgba(255, 250, 243, 0.78) 47%, rgba(255, 250, 243, 0.08) 78%),
+        linear-gradient(0deg, rgba(255, 250, 243, 0.66), transparent 25%);
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero-content {
+      z-index: 3;
+      max-width: 760px;
+      padding-bottom: clamp(16px, 7vh, 80px);
+    }
+
+    .hero .display span {
+      display: block;
+      color: rgba(38, 58, 49, 0.8);
+      font-size: 0.44em;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 1.7;
+    }
+
+    .hero-intro {
+      max-width: 410px;
+      margin: 24px 0 0;
+      color: rgba(38, 58, 49, 0.78);
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 2;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .pill-link {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 0 23px;
+      border: 1px solid rgba(38, 58, 49, 0.32);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+    }
+
+    .pill-link.primary {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .pill-link:hover {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: white;
+    }
+
+    .hero-caption {
+      position: absolute;
+      right: var(--page-gutter);
+      bottom: 30px;
+      z-index: 3;
+      color: rgba(38, 58, 49, 0.72);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
+    /* 關於我：以簡短敘述和三個標籤，讓個人特質容易掃讀。 */
+    .about {
+      background:
+        radial-gradient(ellipse at 87% 45%, rgba(223, 115, 87, 0.11), transparent 34%),
+        var(--ink-soft);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+      gap: clamp(42px, 10vw, 150px);
+      align-items: end;
+    }
+
+    .about-aside {
+      padding: 20px 0 6px clamp(22px, 3vw, 46px);
+      border-left: 1px solid var(--line);
+    }
+
+    .trait-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 24px;
+    }
+
+    .trait {
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: rgba(38, 58, 49, 0.84);
+      font-size: 12px;
+    }
+
+    .aside-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .aside-title {
+      margin: 15px 0 0;
+      font-size: clamp(22px, 2.6vw, 34px);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.7;
+    }
+
+    /* 校園介紹：以大照片和個人學習記憶呈現高中經歷及未來志向。 */
+    .school-panel {
+      background: #fffaf3;
+    }
+
+    .school-panel.cmu-panel {
+      background:
+        radial-gradient(ellipse at 86% 20%, rgba(223, 115, 87, 0.1), transparent 34%),
+        #fff4e8;
+    }
+
+    .school-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+      gap: clamp(36px, 7vw, 100px);
+      align-items: center;
+    }
+
+    .school-copy {
+      max-width: 570px;
+    }
+
+    .school-title {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 64px);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 1.28;
+    }
+
+    .school-title span {
+      display: block;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 0.38em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    .school-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 25px;
+    }
+
+    .school-details span {
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: rgba(38, 58, 49, 0.8);
+      font-size: 11px;
+    }
+
+    .school-figure {
+      min-width: 0;
+      margin: 0;
+    }
+
+    .school-image-link {
+      display: block;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #eaf3ec;
+    }
+
+    .school-image {
+      width: 100%;
+      aspect-ratio: 1.5;
+      object-fit: cover;
+      box-shadow: 0 24px 60px rgba(38, 58, 49, 0.12);
+    }
+
+    .school-figure figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px 16px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .photo-credit {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .school-link {
+      margin-top: 26px;
+    }
+
+    /* 成長足跡：用真實的學習與服務紀錄，呈現跨領域投入的累積。 */
+    .journey {
+      background:
+        linear-gradient(135deg, rgba(223, 115, 87, 0.06), transparent 55%),
+        #fff4e8;
+    }
+
+    .journey-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 36px;
+      align-items: end;
+      margin-bottom: clamp(38px, 7vh, 74px);
+    }
+
+    .journey-header .body-copy {
+      max-width: 300px;
+      margin: 0 0 5px;
+      font-size: 13px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stat-card {
+      min-height: 182px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(20px, 3.2vw, 44px);
+    }
+
+    .stat-card + .stat-card {
+      border-left: 1px solid var(--line);
+    }
+
+    .stat-number {
+      color: var(--accent);
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 400;
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .stat-number.award {
+      font-size: clamp(30px, 3.8vw, 48px);
+      letter-spacing: 0.02em;
+    }
+
+    .stat-label {
+      max-width: 190px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .stat-label strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* 探索與實踐：將科學探究、心理學自主學習和人文閱讀放在一起。 */
+    .exploration {
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 16% 85%, rgba(223, 115, 87, 0.11), transparent 35%),
+        #eaf3ec;
+    }
+
+    .exploration .eyebrow {
+      color: #ae4c35;
+    }
+
+    .exploration .section-heading {
+      max-width: 850px;
+    }
+
+    .exploration .body-copy {
+      max-width: 620px;
+      color: rgba(38, 58, 49, 0.76);
+    }
+
+    .exploration .section-number {
+      color: rgba(38, 58, 49, 0.48);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: clamp(38px, 6vh, 62px);
+      background: rgba(38, 58, 49, 0.16);
+    }
+
+    .story-card {
+      min-height: 180px;
+      padding: 22px 24px;
+      background: #f7fbf7;
+    }
+
+    .story-index {
+      color: #ae4c35;
+      font-size: 11px;
+      letter-spacing: 0.13em;
+    }
+
+    .story-title {
+      margin: 17px 0 8px;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .story-text {
+      margin: 0;
+      color: rgba(38, 58, 49, 0.72);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* 服務與合作：突出紅十字會、志工服務和團隊協調帶來的學習。 */
+    .service {
+      background:
+        linear-gradient(115deg, rgba(241, 249, 242, 0.98), rgba(233, 244, 236, 0.88)),
+        radial-gradient(ellipse at 85% 50%, rgba(223, 115, 87, 0.12), transparent 40%),
+        #eaf3ec;
+    }
+
+    .service-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(230px, 0.6fr);
+      gap: clamp(46px, 10vw, 150px);
+      align-items: center;
+    }
+
+    .service-quote {
+      position: relative;
+      padding: 28px 0 28px 31px;
+      border-left: 1px solid rgba(174, 76, 53, 0.48);
+      color: var(--ink);
+      font-size: clamp(18px, 2.3vw, 26px);
+      letter-spacing: 0.03em;
+      line-height: 1.8;
+    }
+
+    .service-quote small {
+      display: block;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    /* 收尾：把聯絡行動留給使用者自訂，避免公開履歷中的私人聯絡資訊。 */
+    .closing {
+      min-height: max(620px, 100vh);
+      min-height: max(620px, 100svh);
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 44%, rgba(223, 115, 87, 0.13), transparent 43%),
+        #fffaf3;
+    }
+
+    .closing .panel-inner {
+      display: grid;
+      justify-items: center;
+    }
+
+    .closing .eyebrow {
+      justify-content: center;
+    }
+
+    .closing .section-heading {
+      max-width: 850px;
+    }
+
+    .closing .body-copy {
+      max-width: 460px;
+    }
+
+    .closing .action-row {
+      justify-content: center;
+    }
+
+    .site-footer {
+      position: absolute;
+      right: var(--page-gutter);
+      bottom: 20px;
+      left: var(--page-gutter);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .section-number {
+      position: absolute;
+      right: var(--page-gutter);
+      bottom: 30px;
+      color: rgba(38, 58, 49, 0.5);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+    }
+
+    /* 回到頂端按鈕：往下閱讀時才出現，方便快速返回首頁。 */
+    .back-to-top {
+      position: fixed;
+      z-index: 9;
+      right: var(--page-gutter);
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255, 250, 243, 0.94);
+      color: var(--ink);
+      font-size: 19px;
+      box-shadow: 0 8px 22px rgba(38, 58, 49, 0.12);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+    }
+
+    .back-to-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    /* 動態效果只在使用者未要求減少動畫時啟用。 */
+    @media (prefers-reduced-motion: no-preference) {
+      :root {
+        scroll-behavior: smooth;
+        scroll-snap-type: y proximity;
+      }
+
+      .pill-link,
+      .main-nav a,
+      .main-nav a::after,
+      .back-to-top {
+        transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease,
+          opacity 180ms ease, transform 180ms ease;
+      }
+
+      .school-image {
+        transition: transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 300ms ease;
+      }
+
+      .school-image-link:hover .school-image,
+      .school-image-link:focus-visible .school-image {
+        transform: scale(1.045);
+        box-shadow: 0 30px 70px rgba(38, 58, 49, 0.2);
+      }
+
+      .motion-ready .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 700ms ease, transform 700ms ease;
+      }
+
+      .motion-ready .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .motion-ready .stagger-item {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 550ms ease, transform 550ms ease;
+      }
+
+      .motion-ready .reveal.is-visible .stagger-item {
+        opacity: 1;
+        transform: none;
+      }
+
+      .motion-ready .stagger-item:nth-child(2) {
+        transition-delay: 80ms;
+      }
+
+      .motion-ready .stagger-item:nth-child(3) {
+        transition-delay: 160ms;
+      }
+
+      .motion-ready .stagger-item:nth-child(4) {
+        transition-delay: 240ms;
+      }
+    }
+
+    /* 平板與手機：縮小區塊間距，避免卡片和內文擠在一起。 */
+    @media (max-width: 760px) {
+      :root {
+        --page-gutter: 25px;
+        --header-height: 68px;
+      }
+
+      .main-nav {
+        position: absolute;
+        top: calc(var(--header-height) - 1px);
+        right: 16px;
+        left: 16px;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 20px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 250, 243, 0.98);
+      }
+
+      .main-nav.is-open {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .main-nav a {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .main-nav a:last-child {
+        border-bottom: 0;
+      }
+
+      .menu-toggle {
+        display: grid;
+      }
+
+      .panel {
+        min-height: max(660px, 100svh);
+        padding-top: calc(var(--header-height) + 38px);
+        padding-bottom: 88px;
+      }
+
+      .hero {
+        min-height: max(760px, 100svh);
+        align-items: end;
+        background: #e7efe8;
+      }
+
+      .hero-portrait {
+        top: var(--header-height);
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        max-width: none;
+        height: min(66svh, 520px);
+        object-position: center top;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(0deg, #fffaf3 5%, rgba(255, 250, 243, 0.94) 35%, rgba(255, 250, 243, 0.08) 80%),
+          linear-gradient(90deg, rgba(255, 250, 243, 0.3), transparent);
+      }
+
+      .hero-content {
+        padding-bottom: 12px;
+      }
+
+      .hero-caption {
+        right: auto;
+        bottom: 24px;
+        left: var(--page-gutter);
+        max-width: 70%;
+      }
+
+      .about-layout,
+      .school-layout,
+      .service-layout {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .about-aside {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .journey-header {
+        display: block;
+        margin-bottom: 32px;
+      }
+
+      .journey-header .body-copy {
+        margin-top: 16px;
+      }
+
+      .stat-card {
+        min-height: 152px;
+        padding: 20px 14px;
+      }
+
+      .stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stat-card:nth-child(odd) {
+        border-left: 0;
+      }
+
+      .stat-card:nth-child(even) {
+        border-left: 1px solid var(--line);
+      }
+
+      .stat-card:nth-child(n + 3) {
+        border-top: 1px solid var(--line);
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 1px;
+      }
+
+      .story-card {
+        min-height: auto;
+        padding: 18px 20px;
+      }
+
+      .story-title {
+        margin-top: 10px;
+      }
+
+      .closing {
+        min-height: max(640px, 100svh);
+      }
+
+      .site-footer {
+        bottom: 15px;
+        font-size: 9px;
+      }
+    }
+
+    /* 小螢幕：避免導覽、標籤和數據卡片造成橫向溢出。 */
+    @media (max-width: 420px) {
+      .wordmark {
+        font-size: 13px;
+      }
+
+      .hero .display {
+        font-size: clamp(46px, 13vw, 62px);
+      }
+
+      .hero-caption {
+        font-size: 9px;
+      }
+
+      .stat-card {
+        min-height: 140px;
+        padding: 17px 10px;
+      }
+
+      .stat-number {
+        font-size: clamp(37px, 11vw, 48px);
+      }
+
+      .stat-number.award {
+        font-size: clamp(28px, 8vw, 36px);
+      }
+
+      .stat-label {
+        font-size: 10px;
+      }
+
+      .stat-label strong {
+        font-size: 12px;
+      }
+
+      .site-footer {
+        gap: 10px;
+        line-height: 1.6;
+      }
+
+      .back-to-top {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">跳至主要內容</a>
+
+  <!-- 主要導覽：桌面顯示文字選單，手機則以可存取的按鈕開合。 -->
+  <header class="site-header" id="site-header">
+    <a class="wordmark" href="#top" aria-label="呂明穎，回到首頁">
+      <span class="wordmark-mark" aria-hidden="true"></span>
+      <span>呂明穎</span>
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="主要導覽">
+      <a href="#about">關於我</a>
+      <a href="#hsnu">師大附中</a>
+      <a href="#cmu">中國醫大</a>
+      <a href="#journey">成長足跡</a>
+      <a href="#exploration">探索學習</a>
+      <a href="#service">服務合作</a>
+    </nav>
+    <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="開啟導覽選單"
+      aria-controls="main-nav"
+      aria-expanded="false"
+    >
+      <span class="menu-icon" aria-hidden="true"></span>
+    </button>
+  </header>
+
+  <main id="main-content">
+    <!-- 首屏：以積極的學習態度與真實的個人形象開場。 -->
+    <section class="panel hero" id="top" aria-labelledby="hero-title">
+      <img class="hero-portrait" src="181063.jpg" alt="呂明穎的個人照片">
+      <div class="panel-inner hero-content reveal">
+        <p class="eyebrow">CURIOUS · CARING · COURAGEOUS</p>
+        <h1 class="display" id="hero-title">
+          呂明穎
+          <span>保持好奇，<br>勇敢向前。</span>
+        </h1>
+        <p class="hero-intro">從每一次提問、每一份承擔開始，把熱情化為前進的力量。</p>
+        <div class="action-row">
+          <a class="pill-link primary" href="#about">認識我 <span aria-hidden="true">↓</span></a>
+          <a class="pill-link" href="#exploration">看看我的探索</a>
+        </div>
+      </div>
+      <p class="hero-caption">帶著熱忱探索，帶著關懷同行。</p>
+    </section>
+
+    <!-- 個人簡介：只保留和自我介紹有關的特質，不展示私人聯絡資料。 -->
+    <section class="panel about" id="about" aria-labelledby="about-title">
+      <div class="panel-inner about-layout reveal">
+        <div>
+          <p class="eyebrow">A LITTLE ABOUT ME</p>
+          <h2 class="section-heading" id="about-title">用不同的視角，<br>理解同一個世界。</h2>
+          <p class="body-copy">
+            我曾在國立師大附中求學，是一個遇到問題願意多問一步、面對任務會認真負責的人。
+            從科學實驗到人文閱讀，我享受探索新知；在團隊和服務中，我也學著主動溝通、
+            勇於承擔，讓每次挑戰都成為前進的養分。
+          </p>
+        </div>
+        <aside class="about-aside" aria-label="個人特質">
+          <p class="aside-note">我在乎的事</p>
+          <p class="aside-title">保持好奇<br>認真傾聽<br>踏實行動</p>
+          <div class="trait-list">
+            <span class="trait">勇於探索</span>
+            <span class="trait">負責任</span>
+            <span class="trait">樂於助人</span>
+            <span class="trait">團隊合作</span>
+          </div>
+        </aside>
+      </div>
+      <span class="section-number" aria-hidden="true">01 / 06</span>
+    </section>
+
+    <!-- 師大附中：呈現你真實的高中經歷，並提供校園照片及授權來源。 -->
+    <section class="panel school-panel" id="hsnu" aria-labelledby="hsnu-title">
+      <div class="panel-inner school-layout reveal">
+        <div class="school-copy">
+          <p class="eyebrow">MY HIGH SCHOOL YEARS</p>
+          <h2 class="school-title" id="hsnu-title">
+            國立師大附中
+            <span>我的高中 · 成長的起點</span>
+          </h2>
+          <p class="body-copy">
+            高中時光在師大附中度過。我在這裡投入學生自治與紅十字會服務，
+            也從物理探究、閱讀和自主學習中，練習提問、合作與表達。
+            每一次承擔與嘗試，都讓我更知道自己想成為怎樣的人。
+          </p>
+          <div class="school-details" aria-label="高中學習經驗">
+            <span>學生幹部</span>
+            <span>紅十字會服務</span>
+            <span>科學探究</span>
+          </div>
+          <a class="pill-link school-link" href="https://www.hs.ntnu.edu.tw/" target="_blank" rel="noopener noreferrer">
+            探索師大附中 <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <figure class="school-figure">
+          <a
+            class="school-image-link"
+            href="https://commons.wikimedia.org/wiki/File:HSNU_West_Building_01_20250823.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="在 Wikimedia Commons 查看師大附中校園照片"
+          >
+            <img
+              class="school-image"
+              src="campus-hsnu.jpg"
+              alt="師大附中校園西側教學大樓與綠地"
+              loading="lazy"
+            >
+          </a>
+          <figcaption>
+            <span>國立師大附中校園 · 照片：
+              <a
+                class="photo-credit"
+                href="https://commons.wikimedia.org/wiki/File:HSNU_West_Building_01_20250823.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >阿道 / Wikimedia Commons</a>
+            </span>
+            <a
+              class="photo-credit"
+              href="https://creativecommons.org/licenses/by-sa/4.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >CC BY-SA 4.0</a>
+          </figcaption>
+        </figure>
+      </div>
+      <span class="section-number" aria-hidden="true">02 / 06</span>
+    </section>
+
+    <!-- 中國醫藥大學：說明這是你的升學志向，不將申請目標寫成既有就學經歷。 -->
+    <section class="panel school-panel cmu-panel" id="cmu" aria-labelledby="cmu-title">
+      <div class="panel-inner school-layout reveal">
+        <div class="school-copy">
+          <p class="eyebrow">A FUTURE GOAL</p>
+          <h2 class="school-title" id="cmu-title">
+            中國醫藥大學
+            <span>志向中的下一站 · 醫學系</span>
+          </h2>
+          <p class="body-copy">
+            中國醫藥大學醫學系是我努力準備、期待前往的目標。
+            過去投入生物與化學學習，也參與校園救護服務；
+            我希望把探究問題的耐心與關懷他人的初心，帶進未來的醫學學習。
+          </p>
+          <div class="school-details" aria-label="未來學習方向">
+            <span>生物與化學</span>
+            <span>科學探究</span>
+            <span>醫學志向</span>
+          </div>
+          <a class="pill-link school-link" href="https://www.cmu.edu.tw/" target="_blank" rel="noopener noreferrer">
+            認識中國醫藥大學 <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <figure class="school-figure">
+          <a
+            class="school-image-link"
+            href="https://commons.wikimedia.org/wiki/File:Buildings_of_the_China_Medical_University_in_North_District_of_Taichung_02.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="在 Wikimedia Commons 查看中國醫藥大學校園照片"
+          >
+            <img
+              class="school-image"
+              src="campus-cmu.jpg"
+              alt="中國醫藥大學臺中校園建築與庭園"
+              loading="lazy"
+            >
+          </a>
+          <figcaption>
+            <span>中國醫藥大學校園 · 照片：
+              <a
+                class="photo-credit"
+                href="https://commons.wikimedia.org/wiki/File:Buildings_of_the_China_Medical_University_in_North_District_of_Taichung_02.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Dquai / Wikimedia Commons</a>
+            </span>
+            <a
+              class="photo-credit"
+              href="https://creativecommons.org/licenses/by-sa/4.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >CC BY-SA 4.0</a>
+          </figcaption>
+        </figure>
+      </div>
+      <span class="section-number" aria-hidden="true">03 / 06</span>
+    </section>
+
+    <!-- 成長足跡：使用自述資料中的具體紀錄，讓學習經驗更有憑據。 -->
+    <section class="panel journey" id="journey" aria-labelledby="journey-title">
+      <div class="panel-inner reveal">
+        <div class="journey-header">
+          <div>
+            <p class="eyebrow">A RECORD OF GROWTH</p>
+            <h2 class="section-heading" id="journey-title">一步一步，<br>成為更好的自己。</h2>
+          </div>
+          <p class="body-copy">不把挑戰當作阻礙，而是一次次累積實力、走得更遠的機會。</p>
+        </div>
+        <div class="stat-grid" aria-label="學習與服務紀錄">
+          <article class="stat-card stagger-item">
+            <div class="stat-number" data-count="99">99</div>
+            <p class="stat-label"><strong>PR 99</strong>國際運算思維挑戰賽</p>
+          </article>
+          <article class="stat-card stagger-item">
+            <div class="stat-number" data-count="850">850</div>
+            <p class="stat-label"><strong>TOEIC</strong>以語言連結更廣的知識</p>
+          </article>
+          <article class="stat-card stagger-item">
+            <div class="stat-number" data-count="45.5">45.5</div>
+            <p class="stat-label"><strong>小時志工服務</strong>在實際參與中學習關懷</p>
+          </article>
+          <article class="stat-card stagger-item">
+            <div class="stat-number award">二等獎</div>
+            <p class="stat-label"><strong>物理探究實作競賽</strong>初賽素養測驗獲獎；複賽實作優良</p>
+          </article>
+        </div>
+      </div>
+      <span class="section-number" aria-hidden="true">04 / 06</span>
+    </section>
+
+    <!-- 探索學習：並列呈現自然科學探究、正向心理學與閱讀表達。 -->
+    <section class="panel exploration" id="exploration" aria-labelledby="exploration-title">
+      <div class="panel-inner reveal">
+        <p class="eyebrow">LEARNING THROUGH CURIOSITY</p>
+        <h2 class="section-heading" id="exploration-title">提問、驗證，<br>再多理解一點。</h2>
+        <p class="body-copy">
+          從實驗室裡的物理探究，到以正向心理學為題的自主學習，
+          我在卡關時練習重新整理問題、尋找方法，也把每一步的收穫變成向前的底氣。
+        </p>
+        <div class="story-grid">
+          <article class="story-card stagger-item">
+            <span class="story-index">01 — SCIENCE</span>
+            <h3 class="story-title">讓想法接受驗證</h3>
+            <p class="story-text">投入繩波與水溶液實驗，在反覆測試中培養科學探究力。</p>
+          </article>
+          <article class="story-card stagger-item">
+            <span class="story-index">02 — WELLBEING</span>
+            <h3 class="story-title">把知識帶回生活</h3>
+            <p class="story-text">研究正向心理學，把所學轉化為面對挑戰的積極力量。</p>
+          </article>
+          <article class="story-card stagger-item">
+            <span class="story-index">03 — HUMANITIES</span>
+            <h3 class="story-title">練習說出觀點</h3>
+            <p class="story-text">透過閱讀與寫作，整理思緒，也學會理解不同角度。</p>
+          </article>
+        </div>
+      </div>
+      <span class="section-number" aria-hidden="true">05 / 06</span>
+    </section>
+
+    <!-- 服務合作：把志工與幹部經驗轉化為具體的合作與關懷能力。 -->
+    <section class="panel service" id="service" aria-labelledby="service-title">
+      <div class="panel-inner service-layout reveal">
+        <div>
+          <p class="eyebrow">CARE IN ACTION</p>
+          <h2 class="section-heading" id="service-title">把關心，<br>化成實際行動。</h2>
+          <p class="body-copy">
+            我投入紅十字會與校園服務，支援游泳錦標賽、運動會的救護站，也參與淨街行動。
+            擔任幹部時，我協助溝通、凝聚團隊；這些經驗讓我更相信，
+            每個人都能用可靠的行動，為身邊的人帶來支持。
+          </p>
+        </div>
+        <blockquote class="service-quote">
+          「真正的幫助，從願意看見別人的需要開始。」
+          <small>我從志願服務中帶走的提醒</small>
+        </blockquote>
+      </div>
+      <span class="section-number" aria-hidden="true">06 / 06</span>
+    </section>
+
+    <!-- 結尾：以未來志向收束內容；聯絡方式可由本人日後自行補上。 -->
+    <section class="panel closing" id="next" aria-labelledby="closing-title">
+      <div class="panel-inner reveal">
+        <p class="eyebrow">THE ROAD AHEAD</p>
+        <h2 class="section-heading" id="closing-title">以科學為起點，<br>以人為念。</h2>
+        <p class="body-copy">
+          帶著求知的熱情和服務的初心，持續學習、持續傾聽，
+          朝醫學與照護的方向前進。
+        </p>
+        <div class="action-row">
+          <a class="pill-link primary" href="#top">回到首頁 <span aria-hidden="true">↑</span></a>
+          <a class="pill-link" href="#journey">回顧我的成長</a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <span>呂明穎 · 個人自我介紹</span>
+        <span>以使用者提供的素材與資料整理</span>
+      </footer>
+    </section>
+  </main>
+
+  <a class="back-to-top" href="#top" aria-label="回到頁面頂端" tabindex="-1">↑</a>
+
+  <!-- 互動行為：處理手機選單、閱讀進度、目前章節，以及進入視野時的動畫。 -->
+  <script>
+    const header = document.querySelector("#site-header");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNav = document.querySelector("#main-nav");
+    const scrollProgressBar = document.querySelector("#scroll-progress-bar");
+    const backToTop = document.querySelector(".back-to-top");
+    let scrollUpdateScheduled = false;
+
+    function closeMenu() {
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "開啟導覽選單");
+      mainNav.classList.remove("is-open");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "開啟導覽選單" : "關閉導覽選單");
+      mainNav.classList.toggle("is-open", !isOpen);
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    function updateHeader() {
+      const scrollPosition = window.scrollY;
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollableHeight > 0 ? scrollPosition / scrollableHeight : 0;
+
+      header.classList.toggle("is-scrolled", scrollPosition > 24);
+      backToTop.classList.toggle("is-visible", scrollPosition > window.innerHeight * 0.7);
+      backToTop.tabIndex = scrollPosition > window.innerHeight * 0.7 ? 0 : -1;
+      scrollProgressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+      scrollUpdateScheduled = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!scrollUpdateScheduled) {
+          window.requestAnimationFrame(updateHeader);
+          scrollUpdateScheduled = true;
+        }
+      },
+      { passive: true }
+    );
+    window.addEventListener("resize", updateHeader, { passive: true });
+    updateHeader();
+
+    if (document.documentElement.classList.contains("motion-ready")) {
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((element) => {
+        revealObserver.observe(element);
+      });
+
+      const counters = document.querySelectorAll("[data-count]");
+
+      function animateCount(element) {
+        const target = Number(element.dataset.count);
+        const duration = 1000;
+        const start = performance.now();
+
+        function step(now) {
+          const progress = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = target * eased;
+          element.textContent =
+            progress === 1 ? String(target) : String(Math.floor(value * 10) / 10);
+
+          if (progress < 1) window.requestAnimationFrame(step);
+        }
+
+        window.requestAnimationFrame(step);
+      }
+
+      const counterObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCount(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+
+      counters.forEach((counter) => {
+        counterObserver.observe(counter);
+      });
+
+    }
+
+    const navLinks = new Map(
+      [...mainNav.querySelectorAll('a[href^="#"]')].map((link) => [
+        link.hash.slice(1),
+        link
+      ])
+    );
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = navLinks.get(entry.target.id);
+          if (!link || !entry.isIntersecting) return;
+
+          navLinks.forEach((navLink) => navLink.removeAttribute("aria-current"));
+          link.setAttribute("aria-current", "location");
+        });
+      },
+      { rootMargin: "-30% 0px -55% 0px" }
+    );
+
+    navLinks.forEach((_, id) => {
+      const section = document.getElementById(id);
+      if (section) sectionObserver.observe(section);
+    });
+  </script>
+</body>
+</html>
